@@ -11,12 +11,24 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/pariwisata_db')
-.then(()=>{
-  console.log("Connected to Database");
-}).catch((err)=>{
+const DB_PATH = "mongodb+srv://ton:ton@cluster0.l11u5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+mongoose.connect(DB_PATH);
+const conn = mongoose.connection;
+
+conn.once('open',() => {
+  console.log('Connected to Database');
+})
+conn.on('error',()=>{
   console.log("Connected Failed");
-});
+  process.exit();
+})
+
+// .then(()=>{
+//   console.log("Connected to Database");
+// }).catch((err)=>{
+//   console.log("Connected Failed");
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

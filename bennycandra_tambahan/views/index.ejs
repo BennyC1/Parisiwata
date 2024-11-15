@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pariwisata</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Data Pariwisata</h1>
+        
+        <!-- Form Section -->
+        <div class="form-section">
+            <input type="text" id="nama" placeholder="Nama Wisata">
+            <input type="text" id="lokasi" placeholder="Lokasi">
+            <textarea id="deskripsi" placeholder="Deskripsi"></textarea>
+            <button onclick="addWisata()">Tambah Data</button>
+        </div>
+
+        <!-- Display List -->
+        <div id="wisataList" class="wisata-list"></div>
+    </div>
+
+    <script src="javascripts/script.js"></script>
+</body>
+</html>

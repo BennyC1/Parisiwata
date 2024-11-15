@@ -9,7 +9,10 @@
 <body>
     <div class="container">
         <h1>Data Pariwisata</h1>
-        
+
+        <!-- Tombol untuk halaman daftar pariwisata -->
+        <button onclick="window.location.href='/daftar-wisata'" class="view-list-button">Lihat Data Pariwisata</button>
+
         <!-- Form Section -->
         <div class="form-section">
             <input type="text" id="nama" placeholder="Nama Wisata">
@@ -17,9 +20,7 @@
             <textarea id="deskripsi" placeholder="Deskripsi"></textarea>
             <button onclick="addWisata()">Tambah Data</button>
         </div>
-
-        <!-- Display List -->
-        <div id="wisataList" class="wisata-list"></div>
+        
     </div>
 
     <script src="javascripts/script.js"></script>

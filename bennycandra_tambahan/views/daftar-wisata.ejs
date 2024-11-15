@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Pariwisata</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Daftar Data Pariwisata</h1>
+        
+        <!-- Tombol kembali ke halaman utama -->
+        <button onclick="window.location.href='/'" class="back-button">Kembali ke Halaman Utama</button>
+
+        <!-- Daftar wisata -->
+        <div class="wisata-list">
+            <% if (wisataList.length === 0) { %>
+                <p>Data wisata belum tersedia.</p>
+            <% } else { %>
+                <% wisataList.forEach(wisata => { %>
+                    <div class="wisata-item">
+                        <h2><%= wisata.nama %></h2>
+                        <p><strong>Lokasi:</strong> <%= wisata.lokasi %></p>
+                        <p><%= wisata.deskripsi %></p>
+                        <button onclick="deleteWisata('<%= wisata._id %>')">Hapus</button>
+                        <!-- Link untuk menuju halaman edit -->
+                        <a href="edit-wisata/<%= wisata._id %>">
+                            <button>Edit</button>
+                        </a>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+        
+    </div>
+
+    <script src="javascripts/script.js"></script>
+</body>
+</html>

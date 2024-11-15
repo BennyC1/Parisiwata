@@ -41,9 +41,59 @@ router.delete('/api/wisata/:id', async (req, res) => {
     }
 });
 
+// Route untuk memperbarui data wisata
+router.put('/api/wisata/:id', async (req, res) => {
+  const { nama, lokasi, deskripsi } = req.body;
+
+  // Validasi data input
+  if (!nama || !lokasi || !deskripsi) {
+      return res.status(400).json({ message: "Semua kolom harus diisi" });
+  }
+
+  try {
+      // Mengupdate data wisata berdasarkan ID
+      const wisata = await Wisata.findByIdAndUpdate(
+          req.params.id,
+          { nama, lokasi, deskripsi },
+          { new: true } // Mengembalikan data wisata yang sudah diperbarui
+      );
+
+      if (!wisata) {
+          return res.status(404).json({ message: "Data wisata tidak ditemukan" });
+      }
+
+      res.render('edit-wisata', { wisata });
+  } catch (err) {
+      res.status(500).json({ message: "Gagal memperbarui data wisata" });
+  }
+});
+
 // GET: Halaman utama (Render EJS)
 router.get('/', (req, res) => {
     res.render('index');
+});
+
+// Route halaman daftar wisata
+router.get('/daftar-wisata', async (req, res) => {
+  try {
+      const wisataList = await Wisata.find(); // Ambil semua data wisata
+      res.render('daftar-wisata', { wisataList });
+  } catch (err) {
+      res.status(500).send("Gagal memuat halaman daftar wisata");
+  }
+});
+
+// Route untuk menampilkan halaman edit wisata
+router.get('/edit-wisata/:id', async (req, res) => {
+  try {
+      const wisata = await Wisata.findById(req.params.id);
+      if (!wisata) {
+          return res.status(404).send('Wisata tidak ditemukan');
+      }
+      res.render('edit-wisata', { wisata }); // Mengirim data wisata ke halaman edit-wisata.ejs
+  } catch (err) {
+      res.status(500).send('Gagal mengambil data wisata');
+  }
 });
 
 module.exports = router;

@@ -106,3 +106,61 @@ button:hover {
 .wisata-item button:hover {
   background-color: #e84343;
 }
+
+.view-list-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+}
+
+.view-list-button:hover {
+  background-color: #218838;
+}
+
+/* Tombol kembali ke halaman utama */
+.back-button {
+  background-color: #ffc107;
+  color: #333;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background-color: #e0a800;
+}
+
+/* Daftar wisata */
+.wisata-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wisata-item {
+  background-color: #f0f8ff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wisata-item h2 {
+  color: #2575fc;
+}
+
+.wisata-item p {
+  color: #555;
+  margin-top: 5px;
+  line-height: 1.5;
+}

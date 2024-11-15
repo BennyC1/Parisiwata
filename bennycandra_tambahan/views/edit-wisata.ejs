@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Wisata</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Data Wisata</h1>
+
+        <!-- Form Edit -->
+        <form class="form-section" onsubmit="updateWisata(); return false;" id="editForm" action="/api/wisata/<%= wisata._id %>" method="POST">
+            <!-- Field _method untuk memalsukan metode PUT -->
+            <input type="hidden" name="_method" value="PUT" />
+        
+            <input type="text" id="nama" name="nama" value="<%= wisata.nama %>" placeholder="Nama Wisata">
+            <input type="text" id="lokasi" name="lokasi" value="<%= wisata.lokasi %>" placeholder="Lokasi">
+            <textarea id="deskripsi" name="deskripsi" placeholder="Deskripsi"><%= wisata.deskripsi %></textarea>
+        
+            <button type="submit">Perbarui Data</button>
+        </form>
+        
+    </div>
+
+    <script src="/javascripts/script.js"></script>
+</body>
+</html>
